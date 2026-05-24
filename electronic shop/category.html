@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categories — ElectricHub</title>
+  <meta name="description" content="Browse electrical products by category — Lights, Fans, Switches, Wires, and Tools at ElectricHub.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="page-wrapper">
+    <div class="page-hero">
+      <div class="container">
+        <div class="breadcrumb" style="justify-content:center">
+          <a href="index.html">Home</a>
+          <span class="sep">›</span>
+          <span>Categories</span>
+        </div>
+        <h1 class="page-hero-title animate-in">Product <span class="shine">Categories</span></h1>
+        <p class="page-hero-subtitle animate-in animate-in-delay-1">Find your electrical products by category</p>
+      </div>
+    </div>
+
+    <div class="container section-sm">
+      <!-- Category Tabs -->
+      <div class="cat-pills" id="catPills"></div>
+
+      <!-- Results Count -->
+      <div id="catResultCount" class="text-muted mb-2" style="font-size:0.9rem"></div>
+
+      <!-- Products Grid -->
+      <div class="products-grid" id="catProductsGrid"></div>
+
+      <!-- Empty State -->
+      <div class="empty-state hidden" id="catEmpty">
+        <div class="icon">📦</div>
+        <h3>No products in this category</h3>
+        <p>Check back soon or view all products.</p>
+        <a href="products.html" class="btn btn-primary mt-2">Browse All Products</a>
+      </div>
+
+      <div style="padding-bottom:4rem"></div>
+    </div>
+  </div>
+
+  <div id="footer"></div>
+
+  <script src="js/data.js"></script>
+  <script>
+    document.getElementById('navbar').innerHTML = renderNavbar('category.html');
+    document.getElementById('footer').innerHTML = renderFooter();
+
+    const catIcons = {
+      'Lights': '💡',
+      'Fans': '🌀',
+      'Switches': '🔌',
+      'Wires': '🔶',
+      'Tools': '🔧'
+    };
+
+    let activeCategory = 'All';
+
+    // Read URL param
+    const urlParams = new URLSearchParams(window.location.search);
+    const presetCat = urlParams.get('cat');
+    if (presetCat) activeCategory = presetCat;
+
+    // Build pills
+    const cats = ['All', ...getCategories()];
+    const pillsEl = document.getElementById('catPills');
+    pillsEl.innerHTML = cats.map(cat => `
+      <button class="cat-pill ${cat === activeCategory ? 'active' : ''}"
+              onclick="selectCategory('${cat}')" id="pill-${cat.replace(/\s/g,'_')}">
+        ${catIcons[cat] || '📦'} ${cat}
+      </button>
+    `).join('');
+
+    function selectCategory(cat) {
+      activeCategory = cat;
+      // Update pill styles
+      document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+      const pill = document.getElementById('pill-' + cat.replace(/\s/g,'_'));
+      if (pill) pill.classList.add('active');
+      // Update URL without reload
+      const url = new URL(window.location);
+      if (cat === 'All') url.searchParams.delete('cat');
+      else url.searchParams.set('cat', cat);
+      window.history.pushState({}, '', url);
+      renderCategoryProducts();
+    }
+
+    function renderCategoryProducts() {
+      const allProducts = getProducts();
+      const filtered = activeCategory === 'All'
+        ? allProducts
+        : allProducts.filter(p => p.category === activeCategory);
+
+      const grid = document.getElementById('catProductsGrid');
+      const empty = document.getElementById('catEmpty');
+      const count = document.getElementById('catResultCount');
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        empty.classList.remove('hidden');
+        count.innerHTML = '';
+      } else {
+        empty.classList.add('hidden');
+        count.innerHTML = `<strong>${filtered.length}</strong> products in <strong>${activeCategory}</strong>`;
+        grid.innerHTML = filtered.map(p => buildProductCard(p)).join('');
+      }
+    }
+
+    renderCategoryProducts();
+  </script>
+</body>
+</html>

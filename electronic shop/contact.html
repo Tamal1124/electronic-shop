@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — ElectricHub</title>
+  <meta name="description" content="Contact ElectricHub — call, WhatsApp, or visit our shop. Get directions, enquire about products, or send us a message.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="page-wrapper">
+    <!-- Hero -->
+    <div class="page-hero">
+      <div class="container">
+        <div class="breadcrumb" style="justify-content:center">
+          <a href="index.html">Home</a>
+          <span class="sep">›</span>
+          <span>Contact</span>
+        </div>
+        <h1 class="page-hero-title animate-in">Get In <span class="shine">Touch</span></h1>
+        <p class="page-hero-subtitle animate-in animate-in-delay-1">We're here to help — call, WhatsApp, or visit us</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Left: Contact Info -->
+          <div>
+            <div class="section-label mb-2">Reach Us</div>
+            <h2 style="font-size:1.6rem;font-weight:800;margin-bottom:1.5rem">We'd love to hear from you</h2>
+
+            <div class="contact-info-cards">
+              <div class="contact-info-card animate-in">
+                <div class="contact-info-icon">📞</div>
+                <div>
+                  <div class="contact-info-label">Phone</div>
+                  <div class="contact-info-value">
+                    <a href="tel:+919876543210" style="color:var(--text-primary)">+91 98765 43210</a><br>
+                    <a href="tel:+919123456789" style="color:var(--text-muted);font-size:0.88rem">+91 91234 56789</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="contact-info-card animate-in animate-in-delay-1">
+                <div class="contact-info-icon">📧</div>
+                <div>
+                  <div class="contact-info-label">Email</div>
+                  <div class="contact-info-value">
+                    <a href="mailto:info@electrichub.in" style="color:var(--text-primary)">info@electrichub.in</a><br>
+                    <a href="mailto:sales@electrichub.in" style="color:var(--text-muted);font-size:0.88rem">sales@electrichub.in</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="contact-info-card animate-in animate-in-delay-2">
+                <div class="contact-info-icon">📍</div>
+                <div>
+                  <div class="contact-info-label">Address</div>
+                  <div class="contact-info-value">
+                    Shop No. 12, Main Market Road<br>
+                    <span style="color:var(--text-muted);font-size:0.88rem">Near Bus Stand, Sector 5, City — 400001</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="contact-info-card animate-in animate-in-delay-3">
+                <div class="contact-info-icon">🕐</div>
+                <div>
+                  <div class="contact-info-label">Shop Hours</div>
+                  <div class="contact-info-value">
+                    Mon–Sat: 9:00 AM – 8:00 PM<br>
+                    <span style="color:var(--text-muted);font-size:0.88rem">Sunday: 10:00 AM – 4:00 PM</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- WhatsApp Button -->
+            <a href="https://wa.me/919876543210?text=Hi, I would like to enquire about your products." target="_blank"
+               class="btn btn-green mt-3" style="width:100%;justify-content:center;font-size:1rem;padding:1rem">
+              💬 Chat on WhatsApp
+            </a>
+
+            <!-- Map -->
+            <div class="map-wrap">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.981337024459!2d72.83!3d19.07!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDA0JzEyLjAiTiA3MsKwNDknNDguMCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="ElectricHub Location">
+              </iframe>
+            </div>
+          </div>
+
+          <!-- Right: Contact Form -->
+          <div class="contact-form-card animate-in animate-in-delay-1">
+            <h3 style="font-size:1.3rem;font-weight:800;margin-bottom:0.5rem">Send Us a Message</h3>
+            <p style="color:var(--text-muted);font-size:0.88rem;margin-bottom:1.5rem">We'll get back to you within 24 hours.</p>
+
+            <form id="contactForm" onsubmit="submitForm(event)">
+              <div class="form-group">
+                <label for="contactName">Your Name *</label>
+                <input type="text" id="contactName" class="form-control" placeholder="Enter your full name" required>
+              </div>
+              <div class="form-group">
+                <label for="contactPhone">Phone Number *</label>
+                <input type="tel" id="contactPhone" class="form-control" placeholder="+91 XXXXX XXXXX" required>
+              </div>
+              <div class="form-group">
+                <label for="contactEmail">Email Address</label>
+                <input type="email" id="contactEmail" class="form-control" placeholder="your@email.com">
+              </div>
+              <div class="form-group">
+                <label for="contactSubject">Subject</label>
+                <select id="contactSubject" class="form-control">
+                  <option value="">Select a topic</option>
+                  <option value="Product Enquiry">Product Enquiry</option>
+                  <option value="Bulk Order">Bulk Order / Wholesale</option>
+                  <option value="Price Query">Price Query</option>
+                  <option value="Complaint">Complaint</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="contactMessage">Message *</label>
+                <textarea id="contactMessage" class="form-control" rows="5"
+                          placeholder="Tell us how we can help you…" required
+                          style="resize:vertical;min-height:120px"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center" id="submitBtn">
+                📨 Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="footer"></div>
+
+  <script src="js/data.js"></script>
+  <script>
+    document.getElementById('navbar').innerHTML = renderNavbar('contact.html');
+    document.getElementById('footer').innerHTML = renderFooter();
+
+    function submitForm(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      btn.textContent = '⏳ Sending…';
+      btn.disabled = true;
+
+      // Simulate sending
+      setTimeout(() => {
+        document.getElementById('contactForm').reset();
+        btn.textContent = '✓ Message Sent!';
+        btn.style.background = 'linear-gradient(135deg, #059669, #10b981)';
+        showToast('Message sent successfully! We will contact you soon.', 'success');
+
+        setTimeout(() => {
+          btn.textContent = '📨 Send Message';
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 3000);
+      }, 1200);
+    }
+  </script>
+</body>
+</html>

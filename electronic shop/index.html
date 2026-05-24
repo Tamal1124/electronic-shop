@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ElectricHub — Your Trusted Electrical Shop</title>
+  <meta name="description" content="ElectricHub is your one-stop electrical shop for LED bulbs, fans, switches, wires, and tools. Quality products at the best prices.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="page-wrapper">
+    <!-- ── Hero Section ── -->
+    <section class="hero" id="home">
+      <img src="images/shop_banner.png" alt="ElectricHub" class="hero-bg-img" onerror="this.style.display='none'">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Premium Electrical Products
+        </div>
+        <h1 class="hero-title">
+          Power Up Your<br>
+          <span class="line2">Home & Business</span>
+        </h1>
+        <p class="hero-desc">
+          From LED lighting to ceiling fans, switches, wires and tools — ElectricHub brings you quality electrical products at unbeatable prices. Trusted by 5,000+ customers.
+        </p>
+        <div class="hero-actions">
+          <a href="products.html" class="btn btn-primary">🛒 Shop Products</a>
+          <a href="contact.html" class="btn btn-secondary">📞 Contact Us</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-val">500+</div>
+            <div class="hero-stat-label">Products</div>
+          </div>
+          <div>
+            <div class="hero-stat-val">15+</div>
+            <div class="hero-stat-label">Years Experience</div>
+          </div>
+          <div>
+            <div class="hero-stat-val">5K+</div>
+            <div class="hero-stat-label">Happy Customers</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-scroll">
+        <span>Scroll</span>
+        <span>↓</span>
+      </div>
+    </section>
+
+    <!-- ── Why Choose Us ── -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Why ElectricHub</div>
+          <h2 class="section-title">Quality You Can <span class="highlight">Trust</span></h2>
+          <p class="section-subtitle">We source products from top brands and ensure every item meets safety standards.</p>
+        </div>
+        <div class="why-grid">
+          <div class="why-card animate-in animate-in-delay-1">
+            <div class="why-icon">✅</div>
+            <h3>ISI Certified Products</h3>
+            <p>All products meet Bureau of Indian Standards certifications for safety and quality.</p>
+          </div>
+          <div class="why-card animate-in animate-in-delay-2">
+            <div class="why-icon">🚀</div>
+            <h3>Fast Delivery</h3>
+            <p>Same-day delivery within city limits. Quick shipping across the region.</p>
+          </div>
+          <div class="why-card animate-in animate-in-delay-3">
+            <div class="why-icon">💰</div>
+            <h3>Best Prices</h3>
+            <p>Competitive pricing with wholesale rates for contractors and bulk orders.</p>
+          </div>
+          <div class="why-card animate-in">
+            <div class="why-icon">🔧</div>
+            <h3>Expert Advice</h3>
+            <p>Our experienced team helps you pick the right product for every requirement.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Categories Section ── -->
+    <section class="section featured-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Browse by Type</div>
+          <h2 class="section-title">Product <span class="highlight">Categories</span></h2>
+          <p class="section-subtitle">Find exactly what you need from our well-organised product categories.</p>
+        </div>
+        <div class="categories-grid" id="categoriesGrid">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Featured Products ── -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Top Picks</div>
+          <h2 class="section-title">Featured <span class="highlight">Products</span></h2>
+          <p class="section-subtitle">Our most popular products loved by contractors, electricians and homeowners.</p>
+        </div>
+        <div class="products-grid" id="featuredGrid">
+          <!-- Injected by JS -->
+        </div>
+        <div class="text-center mt-3">
+          <a href="products.html" class="btn btn-secondary">View All Products →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA Section ── -->
+    <section class="cta-section">
+      <div class="container" style="position:relative;z-index:1">
+        <h2>Need Help Choosing <span class="shine">the Right Product?</span></h2>
+        <p>Talk to our electrical experts and get personalised recommendations for your project.</p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+          <a href="contact.html" class="btn btn-primary">📞 Call Us Now</a>
+          <a href="https://wa.me/919876543210" target="_blank" class="btn btn-green">💬 WhatsApp Us</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="footer"></div>
+
+  <script src="js/data.js"></script>
+  <script>
+    // Render shared components
+    document.getElementById('navbar').innerHTML = renderNavbar('index.html');
+    document.getElementById('footer').innerHTML = renderFooter();
+
+    // Categories with icons and counts
+    const catConfig = [
+      { name: 'Lights', icon: '💡', href: 'category.html?cat=Lights' },
+      { name: 'Fans', icon: '🌀', href: 'category.html?cat=Fans' },
+      { name: 'Switches', icon: '🔌', href: 'category.html?cat=Switches' },
+      { name: 'Wires', icon: '🔶', href: 'category.html?cat=Wires' },
+      { name: 'Tools', icon: '🔧', href: 'category.html?cat=Tools' },
+    ];
+
+    const products = getProducts();
+    const catGrid = document.getElementById('categoriesGrid');
+    catGrid.innerHTML = catConfig.map(cat => {
+      const count = products.filter(p => p.category === cat.name).length;
+      return `
+        <a href="${cat.href}" class="cat-card animate-in">
+          <div class="cat-icon">${cat.icon}</div>
+          <div class="cat-card-name">${cat.name}</div>
+          <div class="cat-card-count">${count} Products</div>
+        </a>
+      `;
+    }).join('');
+
+    // Featured products (first 4)
+    const featuredGrid = document.getElementById('featuredGrid');
+    const featured = products.slice(0, 4);
+    featuredGrid.innerHTML = featured.map(p => buildProductCard(p)).join('');
+  </script>
+</body>
+</html>
